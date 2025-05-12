@@ -48,4 +48,68 @@
       top: -10px;
       left: 0;
     }
-    .heart:
+    .heart:after {
+      left: -10px;
+      top: 0;
+    }
+    @keyframes float {
+      0% {
+        transform: rotate(45deg) translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: rotate(45deg) translateY(-1200px);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Countdown until I see my love again!!</h1>
+  <div id="countdown"></div>
+  <div class="message">I missed you lots 💗</div>
+
+  <!-- Visible YouTube Embed (clickable for sound) -->
+  <iframe width="300" height="200" 
+    src="https://www.youtube.com/embed/z4nO6NuEM3A?autoplay=1&loop=1&playlist=z4nO6NuEM3A" 
+    frameborder="0" allow="autoplay" allowfullscreen allow="autoplay"></iframe>
+
+  <script>
+    // Set your reunion date and time
+    const targetDate = new Date("2025-05-13T16:00:00");
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        document.getElementById("countdown").innerHTML = "You're finally together! 💖";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("countdown").innerHTML =
+        `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // Floating hearts
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 2 + 4) + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }, 300);
+  </script>
+
+</body>
+</html>
