@@ -34,6 +34,8 @@
       text-decoration: none;
       box-shadow: 0 4px 6px rgba(0,0,0,0.1);
       transition: background-color 0.3s ease;
+      cursor: pointer;
+      margin-bottom: 20px;
     }
     .play-button:hover {
       background-color: #e05591;
@@ -76,10 +78,9 @@
         opacity: 0;
       }
     }
-    .music {
-      height: 0;
-      width: 0;
-      overflow: hidden;
+    .music-player {
+      display: none;
+      margin-top: 20px;
     }
   </style>
 </head>
@@ -88,19 +89,14 @@
   <h1>Countdown until I see my love again!!</h1>
   <div id="countdown"></div>
   <div class="message">I missed you lots 💗</div>
-  <a href="https://m.youtube.com/watch?v=okfR_VIbXEQ&pp=0gcJCdgAo7VqN5tD" 
-     class="play-button" 
-     target="_blank">
-     🎵 Play Our Song 💕
-  </a>
 
-  <!-- Hidden autoplaying embedded music -->
-  <div class="music">
-    <iframe 
-      width="0" height="0"
-      src="https://www.youtube.com/embed/okfR_VIbXEQ?autoplay=1&loop=1&playlist=okfR_VIbXEQ"
+  <div class="play-button" onclick="playSong()">🎵 Play Our Song 💕</div>
+
+  <div class="music-player" id="player">
+    <iframe width="300" height="200"
+      src="https://www.youtube.com/embed/gAIyc4fs668?autoplay=1"
       frameborder="0"
-      allow="autoplay"
+      allow="autoplay; encrypted-media"
       allowfullscreen>
     </iframe>
   </div>
@@ -128,6 +124,10 @@
 
     setInterval(updateCountdown, 1000);
     updateCountdown();
+
+    function playSong() {
+      document.getElementById("player").style.display = "block";
+    }
 
     // Floating hearts
     setInterval(() => {
