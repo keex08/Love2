@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Countdown until I see my love again!!</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background: url('https://i.imgur.com/QrKrvDf.jpg') no-repeat center center fixed;
+      background-size: cover;
+      color: #fff0f5;
+      text-shadow: 1px 1px 3px #b30059;
+      text-align: center;
+      overflow: hidden;
+      padding-top: 100px;
+    }
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 40px;
+    }
+    #countdown {
+      font-size: 2em;
+      margin-bottom: 30px;
+    }
+    .message {
+      font-size: 1.5em;
+      margin-bottom: 50px;
+    }
+    .heart {
+      width: 20px;
+      height: 20px;
+      background-color: #ff4d88;
+      position: absolute;
+      left: 50%;
+      top: 100%;
+      animation: float 6s linear infinite;
+      transform: rotate(45deg);
+      margin-left: -10px;
+    }
+    .heart:before,
+    .heart:after {
+      content: "";
+      width: 20px;
+      height: 20px;
+      background-color: #ff4d88;
+      border-radius: 50%;
+      position: absolute;
+    }
+    .heart:before {
+      top: -10px;
+      left: 0;
+    }
+    .heart:after {
+      left: -10px;
+      top: 0;
+    }
+    @keyframes float {
+      0% {
+        transform: rotate(45deg) translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: rotate(45deg) translateY(-1200px);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Countdown until I see my love again!!</h1>
+  <div id="countdown"></div>
+  <div class="message">I missed you lots 💗</div>
+
+  <!-- Hidden YouTube Embed for "Hrs & Hrs" autoplay + loop -->
+  <iframe width="0" height="0" 
+    src="https://www.youtube.com/embed/z4nO6NuEM3A?autoplay=1&loop=1&playlist=z4nO6NuEM3A" 
+    frameborder="0" allow="autoplay" allowfullscreen></iframe>
+
+  <script>
+    // Set your reunion date and time
+    const targetDate = new Date("2025-05-13T16:00:00");
+
+    function updateCountdown() {
+      const now = new Date();
+      const diff = targetDate - now;
+
+      if (diff <= 0) {
+        document.getElementById("countdown").innerHTML = "You're finally together! 💖";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      document.getElementById("countdown").innerHTML =
+        `${days}d ${hours}h ${minutes}m ${seconds}s`;
+    }
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // Floating hearts
+    setInterval(() => {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 2 + 4) + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 6000);
+    }, 300);
+  </script>
+
+</body>
+</html>
