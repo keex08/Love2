@@ -22,7 +22,21 @@
     }
     .message {
       font-size: 1.5em;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
+    }
+    .play-button {
+      display: inline-block;
+      padding: 12px 20px;
+      background-color: #ff66a3;
+      color: white;
+      font-size: 1em;
+      border-radius: 25px;
+      text-decoration: none;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      transition: background-color 0.3s ease;
+    }
+    .play-button:hover {
+      background-color: #e05591;
     }
     .heart {
       width: 20px;
@@ -63,7 +77,9 @@
       }
     }
     .music {
-      margin-top: 20px;
+      height: 0;
+      width: 0;
+      overflow: hidden;
     }
   </style>
 </head>
@@ -72,17 +88,24 @@
   <h1>Countdown until I see my love again!!</h1>
   <div id="countdown"></div>
   <div class="message">I missed you lots 💗</div>
+  <a href="https://m.youtube.com/watch?v=okfR_VIbXEQ&pp=0gcJCdgAo7VqN5tD" 
+     class="play-button" 
+     target="_blank">
+     🎵 Play Our Song 💕
+  </a>
 
-  <!-- Embedded YouTube Music -->
+  <!-- Hidden autoplaying embedded music -->
   <div class="music">
-    <iframe width="0" height="0" 
-      src="https://www.youtube.com/embed/okfR_VIbXEQ?autoplay=1&loop=1&playlist=okfR_VIbXEQ" 
-      frameborder="0" allow="autoplay" allowfullscreen>
+    <iframe 
+      width="0" height="0"
+      src="https://www.youtube.com/embed/okfR_VIbXEQ?autoplay=1&loop=1&playlist=okfR_VIbXEQ"
+      frameborder="0"
+      allow="autoplay"
+      allowfullscreen>
     </iframe>
   </div>
 
   <script>
-    // Set your reunion date and time
     const targetDate = new Date("2025-05-13T16:00:00");
 
     function updateCountdown() {
